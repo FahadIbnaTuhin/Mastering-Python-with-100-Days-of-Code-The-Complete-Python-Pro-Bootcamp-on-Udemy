@@ -22,7 +22,7 @@ class Snake:
         return self.segments
 
     def move(self):
-        for seg in range(len(STARTING_POSITION) - 1, 0, -1):
+        for seg in range(len(self.segments) - 1, 0, -1):
             xcor = self.segments[seg - 1].xcor()
             ycor = self.segments[seg - 1].ycor()
             self.segments[seg].goto(xcor, ycor)
