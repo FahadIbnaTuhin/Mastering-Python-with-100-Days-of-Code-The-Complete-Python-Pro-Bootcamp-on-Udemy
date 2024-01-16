@@ -1,7 +1,6 @@
 import pandas
 
 data = pandas.read_csv("dhakaWeather.csv")
-
 # print(type(data))
 # Datafram: everything inside a datasheet in excel or any other software
 
