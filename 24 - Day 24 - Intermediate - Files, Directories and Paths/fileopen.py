@@ -2,9 +2,9 @@
 # contents = file.read()
 # print(contents)
 
-# with open("fileopen.txt") as file:
-#     contents = file.read()
-#     print(contents)
+with open("fileopen.txt") as file:
+    contents = file.read()
+    print(contents)
 
 # with open("fileopen.txt", "a") as file:
 #     file.write("\nNew Text.")
@@ -13,5 +13,5 @@
 # with open("newfile.txt", "w") as file:
 #     file.write("New Text.")
 
-with open("newfile.txt", "w") as file:
-    file.write("\nHei fuckasf")
+# with open("newfile.txt", "w") as file:
+#     file.write("\nHei fuckasf")
