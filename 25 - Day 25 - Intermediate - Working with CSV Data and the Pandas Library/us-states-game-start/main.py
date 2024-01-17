@@ -9,16 +9,6 @@ screen.addshape(image)
 turtle.shape(image)
 screen.setup(730, 490)
 
-
-def correct_guess(state, x, y):
-    """write the state in the screen"""
-    state_turtle = turtle.Turtle()
-    state_turtle.penup()
-    state_turtle.hideturtle()
-    state_turtle.goto(x, y)
-    state_turtle.write(state, False, "center", ("Arial", 8, "normal"))
-
-
 # Google: get x y coordinates on click python turtle
 # def get_mouse_click_coor(x, y):
 #     # turtle.onscreenclick(None)
@@ -26,30 +16,38 @@ def correct_guess(state, x, y):
 #
 #
 # turtle.onscreenclick(get_mouse_click_coor)
-# # mainloop: alternative way to keeps the screen open even though our code has finished runnign
+# # mainloop: alternative way to keeps the screen open even though our code has finished runnig
 # turtle.mainloop()
 
 data = pandas.read_csv("50_states.csv")
+all_state = data.state.to_list()
+# print(all_state)
+guessed_state = []
 
-correct = 0
-correct_states = []
-while correct < 51:
-    answer_state = screen.textinput(f"{correct}/50 States Correct", "What's another state name? ").title()
-    # print(answer_state)
-    if len(data[data.state == answer_state]) != 0:
-        row = data[data.state == answer_state]
-        state_name = row.state.item()
-        x_cor = row.x.item()
-        y_cor = row.y.item()
-        # print(f"{state_name}: {x_cor} & {y_cor}")
-        correct_guess(state_name, x_cor, y_cor)
-        correct += 1
-        correct_states.append(state_name)
+while len(guessed_state) < 50:
+    answer_state = screen.textinput(f"{len(guessed_state)}/50 States Guessed",
+                                    "What's another state name? ").title()
 
-    else:
-        print("Wrong")
+    if answer_state == "Exit":
+        missing_states = []
+        for c_state in all_state:
+            if c_state not in guessed_state:
+                missing_states.append(c_state)
+                # with open("learn.csv", "a") as file:
+                #     file.write(c_state + "\n")
+        # print(missing_states)
+        forgotten_state = pandas.DataFrame(missing_states)
+        # print(forgotten_state)
+        forgotten_state.to_csv("learn.csv")
+        break
 
+    if answer_state in all_state:
+        t = turtle.Turtle()
+        t.hideturtle()
+        t.penup()
+        state_data = data[data.state == answer_state]
+        # item(): Returns the first element
+        t.goto(state_data.x.item(), state_data.y.item())
+        t.write(answer_state)
+        guessed_state.append(answer_state)
 
-print(correct_states)
-
-screen.exitonclick()
