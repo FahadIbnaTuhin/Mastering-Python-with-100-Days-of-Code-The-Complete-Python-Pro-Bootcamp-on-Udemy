@@ -29,12 +29,12 @@ while len(guessed_state) < 50:
                                     "What's another state name? ").title()
 
     if answer_state == "Exit":
-        missing_states = []
-        for c_state in all_state:
-            if c_state not in guessed_state:
-                missing_states.append(c_state)
-                # with open("learn.csv", "a") as file:
-                #     file.write(c_state + "\n")
+        missing_states = [c_state for c_state in all_state if c_state not in guessed_state]
+        # for c_state in all_state:
+        #     if c_state not in guessed_state:
+        #         missing_states.append(c_state)
+        #         # with open("learn.csv", "a") as file:
+        #         #     file.write(c_state + "\n")
         # print(missing_states)
         forgotten_state = pandas.DataFrame(missing_states)
         # print(forgotten_state)
