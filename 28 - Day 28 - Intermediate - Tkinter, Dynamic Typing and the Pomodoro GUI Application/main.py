@@ -10,12 +10,35 @@ FONT_NAME = "Courier"
 WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
-
+reps = 0
+timer = None
 # ---------------------------- TIMER RESET ------------------------------- # 
+def reset_timer():
+    window.after_cancel(timer)
+    canvas.itemconfig(timer_text, text="00:00")
+    timer_label.config(text="Timer")
+    tik_label.config(text="")
+    global reps
+    reps = 0
 
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 def start_timer():
-    count_down(5 * 60)
+    global reps
+    reps += 1
+    work_sec, short_break_sec, long_break_sec = WORK_MIN * 60, SHORT_BREAK_MIN * 60, LONG_BREAK_MIN * 60
+
+    if reps % 8 == 0:
+        # If it is the 8th rep:
+        count_down(long_break_sec)
+        timer_label.config(text="BREAK", fg=RED)
+    elif reps % 2 == 0:
+        # If it's the 2nd/4th/6th rep:
+        timer_label.config(text="Break", fg=PINK)
+        count_down(short_break_sec)
+    else:
+        # If it's the 1st/3rd/5th/7th rep:
+        count_down(work_sec)
+        timer_label.config(text="Work", fg=GREEN)
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
 def count_down(count):
     # print(count)
@@ -25,12 +48,19 @@ def count_down(count):
 
     if count_sec < 10:
         count_sec = f"0{count_sec}"
-
     # count_sec = str(count_sec).zfill(2)
 
     canvas.itemconfig(timer_text, text=f"{count_min}:{count_sec}")
     if count > 0:
-        window.after(1000, count_down, count - 1)
+        global timer
+        timer = window.after(1000, count_down, count - 1)
+    else:
+        start_timer()
+        tik = ""
+        work_sessions = math.floor(reps/2)
+        for i in range(work_sessions):
+            tik += "✔️"
+        tik_label.config(text=tik)
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
 window.title("Pomodoro")
@@ -48,12 +78,10 @@ timer_label.grid(column=1, row=1)
 start_button = Button(text="Start", highlightthickness=0, command=start_timer)
 start_button.grid(column=0, row=3)
 
-reset_button = Button(text="Reset", highlightthickness=0)
+reset_button = Button(text="Reset", highlightthickness=0, command=reset_timer)
 reset_button.grid(column=2, row=3)
 
-tik_label = Label(text="✔️", fg=GREEN, font=(FONT_NAME, 10, "normal"))
+tik_label = Label(fg=GREEN, font=(FONT_NAME, 10, "normal"))
 tik_label.grid(column=1, row=4)
-
-
 
 window.mainloop()
