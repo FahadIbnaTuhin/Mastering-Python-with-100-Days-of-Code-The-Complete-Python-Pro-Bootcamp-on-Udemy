@@ -16,6 +16,8 @@ parameters = {
     "lng": MY_LONG,
     "formatted": 0
 }
+# api address r "?" etar age projonto sob endpoint orthat main address. etai url hishebe likhe shudhu likhle parameter
+# use korte hobe
 # "formatted" is optional and by default it's value is 1 which is 12 hours format. But for 24-hour format we selected 0
 data = requests.get(url="https://api.sunrise-sunset.org/json", params=parameters)
 
