@@ -47,7 +47,7 @@ if diff_percent > 5:
 
 # TODO 9. - Send each article as a separate message via Twilio.
 
-# Optional TODO: Format the message like this:
+# Optional TODO: Format the message like this:...
 """
 TSLA: 🔺2%
 Headline: Were Hedge Funds Right About Piling Into Tesla Inc. (TSLA)?. 
