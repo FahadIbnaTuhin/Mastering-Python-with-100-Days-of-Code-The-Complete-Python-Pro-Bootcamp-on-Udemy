@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block body %}
+
+    <h1>{{ msg }}</h1>
+    <h2>{{ 3 * 5 }}</h2>
+    <h3>{{ num }}</h3>
+
+    <!--  after the first parameter of url_for, you can send anything to the server you want  -->
+    <a href="{{ url_for('get_blog', num=3) }}">Go to Blog</a>
+
+    <footer>
+        <p>Copyright {{ year }}. Built by <strong>Md. Fahad Ibna Tuhin</strong></p>
+    </footer>
+
+{% endblock %}

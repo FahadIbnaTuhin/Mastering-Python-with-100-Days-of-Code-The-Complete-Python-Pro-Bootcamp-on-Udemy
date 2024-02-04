@@ -11,12 +11,13 @@ class InternetSpeedTwitterBot:
         service = Service(executable_path="chromedriver.exe")
         self.driver = webdriver.Chrome(service=service)
         self.user_speeds = data
-        self.current_speeds = self.get_internet_speed()
+        # self.current_speeds = self.get_internet_speed()
 
     def tweet_at_provider(self):
-        msg = (f"Hey @comcast why is my internet speed {self.user_speeds['down']}down'\'{self.user_speeds['up']}up when"
-               f" I pay for {self.current_speeds["down"]}down'\'{self.current_speeds["up"]}up in Washington DC?"
-               f" @comcastbusiness  @Xfinity #comcast #speedtest")
+        msg = "Hi"
+        # msg = (f"Hey @comcast why is my internet speed {self.user_speeds['down']}down'\'{self.user_speeds['up']}up when"
+        #        f" I pay for {self.current_speeds["down"]}down'\'{self.current_speeds["up"]}up in Washington DC?"
+        #        f" @comcastbusiness  @Xfinity #comcast #speedtest")
 
         import os
         from dotenv import load_dotenv
