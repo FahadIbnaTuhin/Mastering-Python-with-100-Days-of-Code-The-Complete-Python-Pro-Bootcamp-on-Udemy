@@ -11,7 +11,9 @@
       <h1>Add a new cafe into the database</h1>
 
       <!-- This is where your WTForm will go -->
-      {{ wtf.quick_form(form) }}
+      <form method="POST" action="{{ url_for('add_cafe') }}">
+        {{ wtf.quick_form(form, novalidate=True) }}
+      </form>
 
 	  <p class="space-above"><a href="{{ url_for('cafes') }}">See all cafes</a></p>
 
