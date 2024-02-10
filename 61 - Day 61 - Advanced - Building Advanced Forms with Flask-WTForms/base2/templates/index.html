@@ -1,16 +1,15 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-	<title>Secrets</title>
-</head>
-<body>
-<div class="jumbotron">
-	<h1>Homepage</h1>
-	<div class="container">
-		<h1>Welcome</h1>
-		<p>Are you ready to discover my secret?</p>
-		<a class="btn btn-primary btn-lg" href="{{ url_for('login') }}">Login</a>
+{% extends "bootstrap/base.html" %}
+
+{% block title %} Secrets {% endblock %}
+
+{% block body %}
+
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Welcome</h1>
+			<p>Are you ready to discover my secret?</p>
+			<a class="btn btn-primary btn-lg" href="{{ url_for('login') }}">Login</a>
+		</div>
 	</div>
-</div>
-</body>
-</html>
+
+{% endblock %}
