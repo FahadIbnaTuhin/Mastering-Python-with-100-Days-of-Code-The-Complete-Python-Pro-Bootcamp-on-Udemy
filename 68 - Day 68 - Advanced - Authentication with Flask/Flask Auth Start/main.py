@@ -18,7 +18,7 @@ login_manager.init_app(app)
 #  This callback is used to reload the user object from the user ID stored in the session
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(user_id)
+    return User.query.get(int(user_id))
 
 
 # CREATE TABLE IN DB
