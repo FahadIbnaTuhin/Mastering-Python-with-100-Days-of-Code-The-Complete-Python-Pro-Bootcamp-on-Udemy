@@ -1,3 +1,6 @@
+# Themes: A theme is a collection of LEGO sets that share a common design or subject matter.
+# Sets: A set is a specific box of LEGO bricks and elements that, when assembled, creates a particular model or scene.
+
 import pandas as pd
 import matplotlib.pyplot as plt
 
