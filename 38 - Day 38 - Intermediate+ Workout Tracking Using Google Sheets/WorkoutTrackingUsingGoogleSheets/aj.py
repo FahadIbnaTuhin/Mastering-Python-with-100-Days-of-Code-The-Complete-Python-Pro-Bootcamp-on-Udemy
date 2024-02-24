@@ -1,6 +1,6 @@
 import requests
 
-API_KEY = '.'
+API_KEY = ''
 
 url = 'https://api.spoonacular.com/recipes/guessNutrition'
 
