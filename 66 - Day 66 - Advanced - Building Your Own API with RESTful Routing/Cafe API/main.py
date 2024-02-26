@@ -143,7 +143,7 @@ def add():
 
 # If they knew the id of the cafe (which they can get by making a GET request to fetch data on all the cafes), then they
 # can update the coffee_price field of the cafe. In this situation, a PATCH request is probably more efficient, as we
-# don't need to change any of the rest of the cafe's data. Create a PATCH request route in main.py to handle PATCH
+# don't need to change any of the rest of the cafe's data. Create a PATCH request route in target.py to handle PATCH
 # requests to our API. In order for our API to be RESTful, ideally, the route should be something like this:
 # /update-price/<cafe_id>
 @app.route("/update-price/<int:cafe_id>", methods=["PATCH"])
